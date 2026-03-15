@@ -1,0 +1,87 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap');
+
+@layer base {
+  :root {
+    --font-inter: 'Inter', system-ui, sans-serif;
+    --font-display: 'Playfair Display', Georgia, serif;
+  }
+  
+  body {
+    @apply bg-luxury-off-white text-luxury-charcoal;
+    font-family: var(--font-inter);
+    font-weight: 300;
+    letter-spacing: 0.01em;
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-display);
+    font-weight: 500;
+    letter-spacing: 0.02em;
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+  
+  /* Section spacing system */
+  .section-padding {
+    @apply py-32;
+  }
+  
+  @media (max-width: 1024px) {
+    .section-padding {
+      @apply py-24;
+    }
+  }
+  
+  @media (max-width: 768px) {
+    .section-padding {
+      @apply py-16;
+    }
+  }
+  
+  /* Grain animation */
+  .animate-grain {
+    animation: grain 8s steps(10) infinite;
+  }
+}
+
+/* Mobile hero adjustments */
+@media (max-width: 768px) {
+  .hero-mobile {
+    min-height: auto !important;
+    padding-top: 8rem !important;
+    padding-bottom: 6rem !important;
+  }
+}
+
+/* Grain texture animation */
+@keyframes grain {
+  0%, 100% { transform: translate(0, 0); }
+  10% { transform: translate(-5%, -10%); }
+  20% { transform: translate(-15%, 5%); }
+  30% { transform: translate(7%, -25%); }
+  40% { transform: translate(-5%, 25%); }
+  50% { transform: translate(-15%, 10%); }
+  60% { transform: translate(15%, 0%); }
+  70% { transform: translate(0%, 15%); }
+  80% { transform: translate(3%, 35%); }
+  90% { transform: translate(-10%, 10%); }
+}
+
+/* Shake animation for form errors */
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  25% { transform: translateX(-4px); }
+  75% { transform: translateX(4px); }
+}
+
+.animate-shake {
+  animation: shake 0.3s ease-in-out;
+}
