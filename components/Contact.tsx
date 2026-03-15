@@ -435,12 +435,15 @@ export default function Contact() {
                             : 'border-luxury-gold/20'
                         } rounded-lg text-luxury-off-white focus:outline-none focus:border-luxury-gold focus:shadow-[0_0_20px_rgba(198,164,92,0.2)] transition-all duration-300 appearance-none cursor-pointer`}
                       >
-                        <option value="" className="bg-luxury-charcoal-light">Select Budget</option>
-                        <option value="10k-25k" className="bg-luxury-charcoal-light">₹10k - ₹25k</option>
-                        <option value="25k-50k" className="bg-luxury-charcoal-light">₹25k - ₹50k</option>
-                        <option value="50k-1L" className="bg-luxury-charcoal-light">₹50k - ₹1L</option>
-                        <option value="1L-5L" className="bg-luxury-charcoal-light">₹1L - ₹5L</option>
-                        <option value="5L+" className="bg-luxury-charcoal-light">₹5L+</option>
+                        Replace your entire budget options block with this:
+
+<option value="" className="bg-luxury-charcoal-light">Select Budget</option>
+<option value="1L-3L" className="bg-luxury-charcoal-light">₹1L - ₹3L</option>
+<option value="3L-5L" className="bg-luxury-charcoal-light">₹3L - ₹5L</option>
+<option value="5L-10L" className="bg-luxury-charcoal-light">₹5L - ₹10L</option>
+<option value="10L-15L" className="bg-luxury-charcoal-light">₹10L - ₹15L</option>
+<option value="15L+" className="bg-luxury-charcoal-light">₹15L+</option>
+
                       </select>
                       {errors.budget && touched.budget && (
                         <p className="text-red-400 text-xs mt-1 font-light">{errors.budget}</p>
