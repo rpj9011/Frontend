@@ -25,8 +25,11 @@ export const metadata: Metadata = {
   authors: [{ name: 'Agency K' }],
   creator: 'Agency K',
   publisher: 'Agency K',
-  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000'),
-  openGraph: {
+  metadataBase: new URL(
+  process.env.NEXT_PUBLIC_SITE_URL?.startsWith('http') 
+    ? process.env.NEXT_PUBLIC_SITE_URL 
+    : `https://${process.env.NEXT_PUBLIC_SITE_URL || 'localhost:3000'}`
+),  openGraph: {
     type: 'website',
     locale: 'en_IN',
     url: '/',
