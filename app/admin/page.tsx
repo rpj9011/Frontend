@@ -45,7 +45,7 @@ function AdminLogin({ onLogin }: { onLogin: () => void }) {
     setLoading(true)
 
     try {
-      const response = await fetch('http://localhost:5000/api/admin/login', {
+      const response = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/admin/login`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ email, password })
@@ -183,7 +183,7 @@ function AdminDashboard({ onLogout }: { onLogout: () => void }) {
   const setupWebSocket = () => {
     const token = localStorage.getItem('adminToken') || sessionStorage.getItem('adminToken')
     
-    const socket = io('http://localhost:5000', {
+    const socket = io(process.env.NEXT_PUBLIC_BACKEND_URL!, {
       transports: ['websocket', 'polling']
     })
 
@@ -238,7 +238,7 @@ function AdminDashboard({ onLogout }: { onLogout: () => void }) {
   const loadStats = async () => {
     try {
       const token = localStorage.getItem('adminToken') || sessionStorage.getItem('adminToken')
-      const response = await fetch('http://localhost:5000/api/admin/stats', {
+      const response = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/admin/stats`, {
         headers: { 'Authorization': `Bearer ${token}` }
       })
 
@@ -266,7 +266,7 @@ function AdminDashboard({ onLogout }: { onLogout: () => void }) {
         ...(searchQuery && { search: searchQuery })
       })
 
-      const response = await fetch(`http://localhost:5000/api/admin/leads?${params}`, {
+      const response = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/admin/leads?${params}`, {
         headers: { 'Authorization': `Bearer ${token}` }
       })
 
@@ -288,7 +288,7 @@ function AdminDashboard({ onLogout }: { onLogout: () => void }) {
   const updateLeadStatus = async (leadId: string, status: string) => {
     try {
       const token = localStorage.getItem('adminToken') || sessionStorage.getItem('adminToken')
-      await fetch(`http://localhost:5000/api/admin/leads/${leadId}/status`, {
+      await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/admin/leads/${leadId}/status`, {
         method: 'PATCH',
         headers: {
           'Content-Type': 'application/json',
